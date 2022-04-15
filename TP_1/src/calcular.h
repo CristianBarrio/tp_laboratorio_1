@@ -19,48 +19,48 @@
  *
  * \param num int precio inicial del vuelo
  * \param resultado float* direccion de memoria del resultado
- * \return retorna el resultado del calculo
+ * \return
  *
  */
-float calcularCostoDebito(int num, float* resultado);
+void calcularCostoDebito(int num, float* resultado);
 
 /** \brief calcula el costo del vuelo pagando con credito
  *
  * \param num int precio inicial del vuelo
  * \param resultado float* direccion de memoria del resultado
- * \return retorna el resultado del calculo
+ * \return
  *
  */
-float calcularCostoCredito(int num, float* resultado);
+void calcularCostoCredito(int num, float* resultado);
 
 /** \brief calcula el costo del vuelo pagando con Bitcoin
  *
  * \param num int precio inicial del vuelo
  * \param resultado float* direccion de memoria del resultado
- * \return retorna el resultado del calculo
+ * \return
  *
  */
-float calcularCostoBtc(int num, float* resultado);
+void calcularCostoBtc(int num, float* resultado);
 
 /** \brief calcula el costo por kilometro
  *
  * \param num int precio inicial del vuelo
  * \param km int kilometros ingresados
  * \param resultado float* direccion de memoria del resultado
- * \return retorna el resultado del calculo
+ * \return
  *
  */
-float calcularCostoUnitario(int num, int km, float* resultado);
+void calcularCostoUnitario(int num, int km, float* resultado);
 
 /** \brief calcula la diferencia de precio de los vuelos
  *
  * \param num1 int precio inicial del vuelo de Aerolineas
  * \param num2 int precio inicial del vuelo de Latam
  * \param resultado float* direccion de memoria del resultado
- * \return retorna el resultado del calculo
+ * \return
  *
  */
-int calcularDiferencia(int num1, int num2, int* resultado);
+void calcularDiferencia(int num1, int num2, int* resultado);
 
 
 #endif /* CALCULAR_H_ */
