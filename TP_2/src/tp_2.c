@@ -12,7 +12,6 @@
 #include <stdlib.h>
 #include "utn.h"
 #include "ArrayPassenger.h"
-#include "cargaForzada.h"
 
 int main(void)
 {
@@ -22,27 +21,27 @@ int main(void)
 	int auxId = 1000;
 	char auxName[51];
 	char auxLastName[51];
-	float auxPrice;
+	float auxPrice = 0;
 	char auxFlyCode[10];
-	int auxTypePassenger;
-	int auxStatusFlight;
+	int auxTypePassenger = 0;
+	int auxStatusFlight = 0;
 	int flagIngreso = 0;
 
 	int continuar = 0;
 	int continuarInformes = 0;
 
-	/*ePassenger pasajerosEntradaForzada[LEN] = {
-			{idIngresoForzado, "Jorge", "Gomez", 165000.5, "asdjkh", 1, 0},
-			{idIngresoForzado++, "Julio", "Rolandi", 267000, "jkhhm", 2, 1},
-			{idIngresoForzado++, "Rosana", "Garcia", 151628.32, "vbncv", 1, 0},
-			{idIngresoForzado++, "Benjamin", "Mara", 7800, "lkmnj", 0, 1},
-			{idIngresoForzado++, "Claudia", "Torres", 124027.6, "asdfv", 1, 2},
-			{idIngresoForzado++, "Agustin", "Gonzalez", 96000, "jnfgg", 1, 0},
-			{idIngresoForzado++, "Camila", "Benitez", 104210, "gjnfg", 0, 2},
-			{idIngresoForzado++, "Julieta", "Magnetto", 87000, "ertyi", 2, 1},
-			{idIngresoForzado++, "Martin", "Carrera", 99800, "uioyp", 1, 0},
-			{idIngresoForzado++, "Cristina", "Linares", 185600, "zxcvb", 1, 0}
-	};*/
+	ePassenger pasajerosEntradaForzada[LEN] = {
+			{1000, "Jorge", "Gomez", 165000.5, "asdjkh", 1, 0},
+			{1001, "Julio", "Rolandi", 267000, "jkhhm", 2, 1},
+			{1002, "Rosana", "Garcia", 151628.32, "vbncv", 1, 0},
+			{1003, "Benjamin", "Mara", 7800, "lkmnj", 0, 1},
+			{1004, "Claudia", "Torres", 124027.6, "asdfv", 1, 2},
+			{1005, "Agustin", "Gonzalez", 96000, "jnfgg", 1, 0},
+			{1006, "Camila", "Benitez", 104210, "gjnfg", 0, 2},
+			{1007, "Julieta", "Magnetto", 87000, "ertyi", 2, 1},
+			{1008, "Martin", "Carrera", 99800, "uioyp", 1, 0},
+			{1009, "Cristina", "Linares", 185600, "zxcvb", 1, 0}
+	};
 
 
 	initPassengers(pasajeros, LEN);
@@ -87,17 +86,17 @@ int main(void)
 						switch(menuInformes())
 						{
 							case 1:
-								sortPassengers(pasajeros, LEN, 1);
+								sortPassengers(pasajeros, LEN, 0);
 								printPassengers(pasajeros, LEN);
-								sortPassengersByCode(pasajeros, LEN, 1);
+								sortPassengersByCode(pasajeros, LEN, 0);
 								printPassengers(pasajeros, LEN);
 								averagePrice(pasajeros, LEN);
 								continuarInformes = 1;
 								break;
 							case 2:
-								sortPassengers(pasajeros, LEN, 0);
+								sortPassengers(pasajeros, LEN, 1);
 								printPassengers(pasajeros, LEN);
-								sortPassengersByCode(pasajeros, LEN, 0);
+								sortPassengersByCode(pasajeros, LEN, 1);
 								printPassengers(pasajeros, LEN);
 								averagePrice(pasajeros, LEN);
 								continuarInformes = 1;
@@ -121,15 +120,6 @@ int main(void)
 					switch(menuInformes())
 					{
 						case 1:
-							/*system("cls");
-							sortPassengers(pasajerosEntradaForzada, LEN, 1);
-							printPassengers(pasajerosEntradaForzada, LEN);
-							sortPassengersByCode(pasajerosEntradaForzada, LEN, 1);
-							printPassengers(pasajerosEntradaForzada, LEN);
-							averagePrice(pasajerosEntradaForzada, LEN);
-							continuarInformes = 1;
-							break;
-						case 2:
 							system("cls");
 							sortPassengers(pasajerosEntradaForzada, LEN, 0);
 							printPassengers(pasajerosEntradaForzada, LEN);
@@ -138,9 +128,18 @@ int main(void)
 							averagePrice(pasajerosEntradaForzada, LEN);
 							continuarInformes = 1;
 							break;
+						case 2:
+							system("cls");
+							sortPassengers(pasajerosEntradaForzada, LEN, 1);
+							printPassengers(pasajerosEntradaForzada, LEN);
+							sortPassengersByCode(pasajerosEntradaForzada, LEN, 1);
+							printPassengers(pasajerosEntradaForzada, LEN);
+							averagePrice(pasajerosEntradaForzada, LEN);
+							continuarInformes = 1;
+							break;
 						case 3:
 							continuarInformes = 1;
-							break;*/
+							break;
 						default:
 							printf("Ingrese una opcion valida.\n");
 							break;

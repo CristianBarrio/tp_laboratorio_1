@@ -139,68 +139,6 @@ int utn_getName(char* cadena, char* mensaje, char* mensajeError)
 
 	return retorno;
 }
-/*
-int obtenerIntPositivo(char mensaje[], int* numero)
-{
-	int retorno = -1;
-	printf(mensaje);
-	scanf("%d", numero);
-
-	/*if(*numero < 0 || isdigit(*numero) == 0)
-	{
-		printf("Hubo un problema al ingresar el numero.\n");
-		printf(mensaje);
-		scanf("%f", numero);
-	}
-
-	retorno = 0;
-
-	return retorno;
-}
-
-int obtenerFloatPositivo(char mensaje[], float* numero)
-{
-	int retorno = -1;
-	printf(mensaje);
-	scanf("%f", numero);
-
-	/*if(*numero < 0 || isdigit(*numero) == 0)
-	{
-		printf("Hubo un problema al ingresar el numero.\n");
-		printf(mensaje);
-		scanf("%f", numero);
-	}
-
-	retorno = 0;
-
-	return retorno;
-}
-
-int obtenerCadena(char mensaje[], char cadena[])
-{
-	int retorno = -1;
-
-	printf(mensaje);
-	fflush(stdin);
-	gets(cadena);
-
-	if(cadena != NULL)
-	{
-		for(int i = 0; cadena[i] != '\0'; i++)
-		{
-			if(isalpha(cadena[i]) == 0)
-			{
-				printf("Hubo un problema al ingresar la cadena.\n");
-				printf(mensaje);
-				fflush(stdin);
-				gets(cadena);
-			}
-		}
-		retorno = 0;
-	}
-
-	return retorno;
-}*/
 
 int menu()
 {

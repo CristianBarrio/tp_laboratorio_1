@@ -15,39 +15,66 @@
 
 #endif /* UTN_H_ */
 
+/**
+ *
+ * @param cadena
+ * @param longitud
+ * @return
+ */
 int myGets(char *cadena, int longitud);
+
+/**
+ *
+ * @param pResultado
+ * @return
+ */
 int getInt(int *pResultado);
+
+/**
+ *
+ * @param cadena
+ * @return
+ */
 int esNumerica(char *cadena);
+
+/**
+ *
+ * @param pResultado
+ * @param mensaje
+ * @param mensajeError
+ * @param minimo
+ * @param maximo
+ * @return
+ */
 int utn_getInt(int *pResultado, char *mensaje, char *mensajeError, int minimo, int maximo);
+
+/**
+ *
+ * @param pResultado
+ * @return
+ */
 int getFloat(float *pResultado);
+
+/**
+ *
+ * @param pResultado
+ * @param mensaje
+ * @param mensajeError
+ * @param minimo
+ * @param maximo
+ * @return
+ */
 int utn_getFloat(float *pResultado, char *mensaje, char *mensajeError, float minimo, float maximo);
+
+/**
+ *
+ * @param cadena
+ * @param mensaje
+ * @param mensajeError
+ * @return
+ */
 int utn_getName(char* cadena, char* mensaje, char* mensajeError);
 
-/*
-/**brief Imprime el mensaje deseado y pide el ingreso de un numero entero positivo, y
- * valida si es correcto
- *
- * @param mensaje char[]
- * @param numero int
- * @return retorna -1 si hubo un error, de lo contrario retorna 0
- *//*
-int obtenerIntPositivo(char mensaje[], int* numero);
-
-/**brief
- *
- * @param mensaje
- * @param numero
- * @return retorna -1 si hubo un error, de lo contrario retorna 0
- *//*
-int obtenerFloatPositivo(char mensaje[], float* numero);
-
-/**brief
- *
- * @param mensaje
- * @param cadena
- * @return retorna -1 si hubo un error, de lo contrario retorna 0
- *//*
-int obtenerCadena(char mensaje[], char cadena[]);
 
 /**brief
  *

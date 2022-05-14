@@ -193,7 +193,7 @@ int removePassenger(ePassenger* list, int len, int id)
 
 void printPassenger(ePassenger passenger)
 {
-	printf("%d    %s      %s       %.2f   %s       %d      %d\n", passenger.id,
+	printf("%d    %s      %s     %.2f   %s       %d      %d\n", passenger.id,
 												 			passenger.lastName,
 															passenger.name,
 															passenger.price,
