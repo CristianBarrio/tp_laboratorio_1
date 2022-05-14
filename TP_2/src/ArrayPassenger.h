@@ -2,7 +2,7 @@
  * ArrayPassenger.h
  *
  *  Created on: May 9, 2022
- *      Author: Cristian
+ *      Author: Barrio Cristian
  */
 
 #ifndef ARRAYPASSENGER_H_
@@ -29,7 +29,7 @@ typedef struct
 
 #endif /* ARRAYPASSENGER_H_ */
 
-/**
+/**brief
  *
  * @param list
  * @param len
@@ -37,7 +37,7 @@ typedef struct
  */
 int initPassengers(ePassenger* list, int len);
 
-/**
+/**brief
  *
  * @param list
  * @param len
@@ -52,7 +52,7 @@ int initPassengers(ePassenger* list, int len);
  */
 int addPassenger(ePassenger* list, int len, int id, char name[],char lastName[],float price,int typePassenger, char flyCode[], int statusFlight);
 
-/**
+/**brief
  *
  * @param list
  * @param len
@@ -67,7 +67,7 @@ int addPassenger(ePassenger* list, int len, int id, char name[],char lastName[],
  */
 int modifyPassenger(ePassenger* list, int len, int id, char name[],char lastName[],float price,int typePassenger, char flyCode[], int statusFlight);
 
-/**
+/**brief
  *
  * @param list
  * @param len
@@ -76,7 +76,7 @@ int modifyPassenger(ePassenger* list, int len, int id, char name[],char lastName
  */
 int findPassengerById(ePassenger* list, int len,int id);
 
-/**
+/**brief
  *
  * @param list
  * @param len
@@ -85,13 +85,13 @@ int findPassengerById(ePassenger* list, int len,int id);
  */
 int removePassenger(ePassenger* list, int len, int id);
 
-/**
+/**brief
  *
  * @param passenger
  */
 void printPassenger(ePassenger passenger);
 
-/**
+/**brief
  *
  * @param list
  * @param len
@@ -99,7 +99,7 @@ void printPassenger(ePassenger passenger);
  */
 int printPassengers(ePassenger* list, int len);
 
-/**
+/**brief
  *
  * @param list
  * @param len
@@ -108,7 +108,7 @@ int printPassengers(ePassenger* list, int len);
  */
 int sortPassengers(ePassenger* list, int len, int order);
 
-/**
+/**brief
  *
  * @param list
  * @param len
@@ -117,7 +117,7 @@ int sortPassengers(ePassenger* list, int len, int order);
  */
 int sortPassengersByCode(ePassenger* list, int len, int order);
 
-/**
+/**brief
  *
  * @param list
  * @param len
