@@ -319,7 +319,7 @@ int averagePrice(ePassenger* list, int len)
 				contadorDePasajeros++;
 			}
 
-			if(list[i].price > promedioDePrecios)
+			if(!list[i].isEmpty && list[i].price > promedioDePrecios)
 			{
 				contadorSuperanPromedio++;
 			}
