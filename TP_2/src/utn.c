@@ -187,3 +187,4 @@ int menuInformes()
 	return opcion;
 }
 
+
