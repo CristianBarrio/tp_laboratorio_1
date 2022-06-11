@@ -28,6 +28,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListPassenger);
 /** \brief Permite ingresar un pasajero al LinkedList
  *
  * \param pArrayListPassenger LinkedList* puntero a la lista de pasajeros
+ * \nparam idsUsados int cantidad de IDs ya utilizados
  * \return retorna 0 si hubo un error, de lo contrario 1
  *
  */

@@ -30,7 +30,6 @@ int main()
     int flagGuardado = 1;
     int flagAlta = 0;
     int pasajerosIngresados = 0;
-    int pasajerosEliminados = 0;
 
     LinkedList* listaPasajeros = ll_newLinkedList();
 
@@ -120,7 +119,6 @@ int main()
 						printf("Baja realizada con exito.\n");
 						flagGuardado = 0;
 						pasajerosIngresados--;
-						//pasajerosEliminados++;
 
 						if(pasajerosIngresados > 0)
 						{
