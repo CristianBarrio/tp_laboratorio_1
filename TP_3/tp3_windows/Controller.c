@@ -51,7 +51,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListPassenger)
 }
 
 
-int controller_addPassenger(LinkedList* pArrayListPassenger)
+int controller_addPassenger(LinkedList* pArrayListPassenger,int idsUsados)
 {
 	int retorno = 0;
 	Passenger* pasajero;
@@ -73,7 +73,7 @@ int controller_addPassenger(LinkedList* pArrayListPassenger)
 
 		printf("     ALTA PASAJERO\n"
 				"------------------------------\n");
-		id = tam + 1;
+		id = tam + 1 + idsUsados;
 
 		utn_getString(nombre,"Ingrese el nombre: ","Nombre invalido.\n");
 		utn_getString(apellido,"Ingrese el apellido: ","Apellido invalido.\n");
@@ -384,7 +384,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
 										break;
 								}
 
-						fprintf(pFile,"%d,%s,%s,%.2f,%s,%d,%d\n",id,nombre,apellido,precio,codigo,tipo,estado);
+						fprintf(pFile,"%d,%s,%s,%.2f,%s,%s,%s\n",id,nombre,apellido,precio,codigo,tipoStr,estadoStr);
 					}
 					retorno = 1;
 				}
@@ -462,7 +462,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 										break;
 								}
 
-						fprintf(pFile,"%d,%s,%s,%.2f,%s,%d,%d\n",id,nombre,apellido,precio,codigo,tipo,estado);
+						fprintf(pFile,"%d,%s,%s,%.2f,%s,%s,%s\n",id,nombre,apellido,precio,codigo,tipoStr,estadoStr);
 					}
 					retorno = 1;
 				}

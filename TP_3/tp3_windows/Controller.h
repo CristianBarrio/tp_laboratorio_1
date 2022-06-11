@@ -31,7 +31,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListPassenger);
  * \return retorna 0 si hubo un error, de lo contrario 1
  *
  */
-int controller_addPassenger(LinkedList* pArrayListPassenger);
+int controller_addPassenger(LinkedList* pArrayListPassenger,int idsUsados);
 
 /** \brief Permite modificar los datos de un pasajero seleccionado
  *

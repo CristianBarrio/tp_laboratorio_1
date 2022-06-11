@@ -30,6 +30,7 @@ int main()
     int flagGuardado = 1;
     int flagAlta = 0;
     int pasajerosIngresados = 0;
+    int pasajerosEliminados = 0;
 
     LinkedList* listaPasajeros = ll_newLinkedList();
 
@@ -83,7 +84,7 @@ int main()
                 }
             	break;
             case 3:
-            	if(controller_addPassenger(listaPasajeros))
+            	if(controller_addPassenger(listaPasajeros,pasajerosIngresados))
             	{
             		printf("Alta realizada con exito.\n");
             		flagGuardado = 0;
@@ -118,7 +119,8 @@ int main()
 					{
 						printf("Baja realizada con exito.\n");
 						flagGuardado = 0;
-						//pasajerosIngresados++;
+						pasajerosIngresados--;
+						//pasajerosEliminados++;
 
 						if(pasajerosIngresados > 0)
 						{
