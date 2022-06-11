@@ -71,6 +71,8 @@ int controller_addPassenger(LinkedList* pArrayListPassenger)
 	if(pArrayListPassenger != NULL)
 	{
 
+		printf("     ALTA PASAJERO\n"
+				"------------------------------\n");
 		id = tam + 1;
 
 		utn_getString(nombre,"Ingrese el nombre: ","Nombre invalido.\n");
@@ -288,7 +290,10 @@ int controller_ListPassenger(LinkedList* pArrayListPassenger)
 		for(int i = 0; i < tam; i++)
 		{
 			pasajero = (Passenger*) ll_get(pArrayListPassenger,i);
-			Passenger_mostrarUnPasajero(pasajero);
+			if(pasajero != NULL)
+			{
+				Passenger_mostrarUnPasajero(pasajero);
+			}
 		}
 
 		retorno = 1;
@@ -337,11 +342,10 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
 
 				if(pFile != NULL)
 				{
-					fprintf(pFile,"id,name,lastname,price,flycode,typePassenger,statusFlight\n");
+					fprintf(pFile,"\n\nid,name,lastname,price,flycode,typePassenger,statusFlight\n");
 					for(int i = 0; i < tam; i++)
 					{
 						pasajero = (Passenger*)ll_get(pArrayListPassenger,i);
-					}
 
 					if(pasajero != NULL && Passenger_getId(pasajero,&id) &&
 							Passenger_getNombre(pasajero,nombre) &&
@@ -381,8 +385,9 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
 								}
 
 						fprintf(pFile,"%d,%s,%s,%.2f,%s,%d,%d\n",id,nombre,apellido,precio,codigo,tipo,estado);
-						retorno = 1;
 					}
+					retorno = 1;
+				}
 			}
 
 			fclose(pFile);
@@ -415,11 +420,10 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 
 				if(pFile != NULL)
 				{
-					fprintf(pFile,"id,name,lastname,price,flycode,typePassenger,statusFlight\n");
+					fprintf(pFile,"\n\nid,name,lastname,price,flycode,typePassenger,statusFlight\n");
 					for(int i = 0; i < tam; i++)
 					{
 						pasajero = (Passenger*)ll_get(pArrayListPassenger,i);
-					}
 
 					if(pasajero != NULL && Passenger_getId(pasajero,&id) &&
 							Passenger_getNombre(pasajero,nombre) &&
@@ -459,8 +463,9 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 								}
 
 						fprintf(pFile,"%d,%s,%s,%.2f,%s,%d,%d\n",id,nombre,apellido,precio,codigo,tipo,estado);
-						retorno = 1;
 					}
+					retorno = 1;
+				}
 			}
 
 			fclose(pFile);

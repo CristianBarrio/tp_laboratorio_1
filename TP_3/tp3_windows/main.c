@@ -155,16 +155,12 @@ int main()
             	}
 				break;
 			case 7:
+				// TARDA EN RESPONDER PERO FUNCIONA !!
 				if(flagAlta || flagCarga)
 				{
-					if(controller_sortPassenger(listaPasajeros))
-					{
-						printf("Ordenamiento realizado con exito.\n");
-						flagGuardado = 0;
-					}else
-					{
-						printf("Hubo un error al realizar el ordenamiento.\n");
-					}
+					controller_sortPassenger(listaPasajeros);
+					printf("Ordenamiento realizado con exito.\n");
+					flagGuardado = 0;
 				}else
 				{
 					printf("No hay pasajeros para ordenar.\n");
