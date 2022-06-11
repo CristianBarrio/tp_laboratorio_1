@@ -18,12 +18,6 @@
      8. Guardar los datos de los pasajeros en el archivo data.csv (modo texto).
      9. Guardar los datos de los pasajeros en el archivo data.csv (modo binario).
     10. Salir
-    Aclaraciones:
--Se debe usar mas de una biblioteca propia (una para pedidos de datos para el
-usuario separada de la entidad pasajero)
--Se puede utilizar la segunda entidad creada en el tp 2. Para esto se debe tener
-extremo cuidado en tocar el csv, en todo caso crear otro csv con los datos de la
-segunda entidad. Pero no es obligatorio
 *****************************************************/
 
 
@@ -100,25 +94,39 @@ int main()
                 }
 				break;
             case 4:
-            	if(controller_editPassenger(listaPasajeros) && flagAlta)
+            	if(flagAlta)
             	{
-            		printf("Modificacion realizada con exito.\n");
-            		flagGuardado = 0;
-				}else
-				{
-					printf("Hubo un error al realizar la modificacion.\n");
-				}
+
+					if(controller_editPassenger(listaPasajeros))
+					{
+						printf("Modificacion realizada con exito.\n");
+						flagGuardado = 0;
+					}else
+					{
+						printf("Hubo un error al realizar la modificacion.\n");
+					}
+            	}else
+            	{
+            		printf("No es posible realizar la modificacion sin haber ingresado pasajeros.\n");
+            	}
 				break;
             case 5:
-            	if(controller_removePassenger(listaPasajeros) && flagAlta)
+            	if(flagAlta)
             	{
-            		printf("Baja realizada con exito.\n");
-            		flagGuardado = 0;
-            		//pasajerosIngresados--;
-				}else
-				{
-					printf("Hubo un error al realizar la baja.\n");
-				}
+
+					if(controller_removePassenger(listaPasajeros))
+					{
+						printf("Baja realizada con exito.\n");
+						flagGuardado = 0;
+						pasajerosIngresados++;
+					}else
+					{
+						printf("Hubo un error al realizar la baja.\n");
+					}
+            	}else
+            	{
+            		printf("No es posible realizar la baja sin haber ingresado pasajeros.\n");
+            	}
 				break;
             case 6:
             	if(controller_ListPassenger(listaPasajeros))

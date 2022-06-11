@@ -29,16 +29,19 @@ int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
 int controller_loadFromBinary(char* path , LinkedList* pArrayListPassenger)
 {
 	int retorno = 0;
-	FILE* pFile = fopen(path,"rb");
 
-	if(pFile != NULL && pArrayListPassenger != NULL)
+	if(path != NULL && pArrayListPassenger != NULL)
 	{
-		if(parser_PassengerFromBinary(pFile,pArrayListPassenger))
+		FILE* pFile = fopen(path,"rb");
+		if(pFile != NULL)
 		{
-			printf("Archivos cargados con exito.\n");
-			retorno = 1;
+			if(parser_PassengerFromBinary(pFile,pArrayListPassenger))
+			{
+				printf("Archivos cargados con exito.\n");
+				retorno = 1;
+			}
+			fclose(pFile);
 		}
-		fclose(pFile);
 	}else
 	{
 		printf("Error al abrir el archivo.\n");
@@ -301,7 +304,6 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
 
 	if(pArrayListPassenger != NULL)
 	{
-
 		if(ll_sort(pArrayListPassenger,Passenger_compararApellido,0))
 		{
 			retorno = 1;
@@ -396,12 +398,14 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 
 	if(path != NULL && pArrayListPassenger != NULL)
 	{
-		FILE* pFile = fopen(path,"wb");
+		FILE* pFile = fopen(path,"ab");
 
 		if(pFile != NULL)
 		{
-
+			fwrite(path,sizeof(Passenger),1,pFile);
+			retorno = 1;
 		}
+		fclose(pFile);
 	}
 
     return retorno;

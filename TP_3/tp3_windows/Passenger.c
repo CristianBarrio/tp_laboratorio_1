@@ -11,10 +11,7 @@ Passenger* Passenger_new()
 {
 	Passenger* pasajero;
 
-	if(pasajero != NULL)
-	{
-		pasajero = (Passenger*) malloc(sizeof(Passenger));
-	}
+	pasajero = (Passenger*) malloc(sizeof(Passenger));
 
 	return pasajero;
 }
@@ -40,12 +37,6 @@ Passenger* Passenger_newParametros(char* idStr,char* nombreStr,char* tipoPasajer
 	{
 		Passenger_delete(pasajero);
 	}
-	//strcpy(pasajero->nombre, nombreStr);
-	//strcpy(pasajero->tipoPasajero, tipoPasajeroStr);
-	//strcpy(pasajero->apellido, apellido);
-	//strcpy(pasajero->codigoVuelo, codigo);
-	//pasajero->precio = atof(precio);
-	//strcpy(pasajero->estadoVuelo = estado);
 
 	return 0;
 }
@@ -88,7 +79,6 @@ int Passenger_setNombre(Passenger* this,char* nombre)
 	if(this != NULL && nombre != NULL)
 	{
 		strcpy(this->nombre,nombre);
-		//*this->nombre = nombre;
 		retorno = 1;
 	}
 
@@ -102,7 +92,6 @@ int Passenger_getNombre(Passenger* this,char* nombre)
 	if(this != NULL && nombre != NULL)
 	{
 		strcpy(nombre,this->nombre);
-		//*nombre = this->nombre;
 		retorno = 1;
 	}
 
@@ -116,7 +105,6 @@ int Passenger_setApellido(Passenger* this,char* apellido)
 	if(this != NULL && apellido != NULL)
 	{
 		strcpy(this->apellido,apellido);
-		//*this->apellido = apellido;
 		retorno = 1;
 	}
 
@@ -130,7 +118,6 @@ int Passenger_getApellido(Passenger* this,char* apellido)
 	if(this != NULL && apellido != NULL)
 	{
 		strcpy(apellido,this->apellido);
-		//*apellido = this->apellido;
 		retorno = 1;
 	}
 
@@ -144,7 +131,6 @@ int Passenger_setCodigoVuelo(Passenger* this,char* codigoVuelo)
 	if(this != NULL && codigoVuelo != NULL)
 	{
 		strcpy(this->codigoVuelo,codigoVuelo);
-		//*this->codigoVuelo = codigoVuelo;
 		retorno = 1;
 	}
 
@@ -158,7 +144,6 @@ int Passenger_getCodigoVuelo(Passenger* this,char* codigoVuelo)
 	if(this != NULL && codigoVuelo != NULL)
 	{
 		strcpy(codigoVuelo,this->codigoVuelo);
-		//*codigoVuelo = this->codigoVuelo;
 		retorno = 1;
 	}
 
@@ -331,7 +316,7 @@ int Passenger_buscarPasajero(LinkedList* this, int id)
 
 int Passenger_compararApellido(void* pasajero1, void* pasajero2)
 {
-	int retorno = -1;
+	int retorno;
 	char apellido1[TAM_NOMBRE];
 	char apellido2[TAM_NOMBRE];
 
