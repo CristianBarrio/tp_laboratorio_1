@@ -27,7 +27,6 @@ segunda entidad. Pero no es obligatorio
 *****************************************************/
 
 
-
 int main()
 {
 	setbuf(stdout,NULL);
@@ -51,8 +50,18 @@ int main()
                 {
                 	printf("Datos cargados exitosamente desde data.csv (modo texto).\n");
                 	flagCarga = 1;
-                	pasajerosIngresados = pasajerosIngresados + 1000;
-                	controller_changeId(listaPasajeros,pasajerosIngresados);
+
+                	if(pasajerosIngresados > 0)
+                	{
+						if(controller_changeId(listaPasajeros,pasajerosIngresados))
+						{
+							printf("ID modificado correctamente.\n");
+						}else
+						{
+							printf("Hubo un problema al modificar el ID.\n");
+						}
+                	}
+
                 }else
                 {
                 	printf("Hubo un error al cargar los datos.\n");
@@ -63,8 +72,15 @@ int main()
             	{
             		printf("Datos cargados exitosamente desde data.csv (modo binario).\n");
             		flagCarga = 1;
-            		pasajerosIngresados = pasajerosIngresados + 1000;
-            		controller_changeId(listaPasajeros,pasajerosIngresados);
+
+            		if(controller_changeId(listaPasajeros,pasajerosIngresados))
+					{
+						printf("ID modificado correctamente.\n");
+					}else
+					{
+						printf("Hubo un problema al modificar el ID.\n");
+					}
+
             	}else
                 {
                 	printf("Hubo un error al cargar los datos.\n");
@@ -77,7 +93,7 @@ int main()
             		flagGuardado = 0;
             		flagAlta = 1;
             		pasajerosIngresados++;
-            		controller_changeId(listaPasajeros,pasajerosIngresados);
+
             	}else
                 {
                 	printf("Hubo un error al realizar el alta.\n");
@@ -98,8 +114,7 @@ int main()
             	{
             		printf("Baja realizada con exito.\n");
             		flagGuardado = 0;
-            		pasajerosIngresados--;
-            		controller_changeId(listaPasajeros,pasajerosIngresados);
+            		//pasajerosIngresados--;
 				}else
 				{
 					printf("Hubo un error al realizar la baja.\n");
@@ -115,7 +130,7 @@ int main()
 				}
 				break;
 			case 7:
-            	if(controller_sortPassenger(listaPasajeros))
+            	if(controller_sortPassenger(listaPasajeros) && controller_ListPassenger(listaPasajeros))
             	{
             		printf("Ordenamiento realizado con exito.\n");
             		flagGuardado = 0;
@@ -148,6 +163,8 @@ int main()
 				if(flagGuardado)
 				{
 					continuar = 1;
+					ll_deleteLinkedList(listaPasajeros);
+					printf("Se elimino el LinkedList. Finaliza el programa.\n");
 				}else
 				{
 					printf("No se puede salir del sistema sin antes guardar los datos.\n");

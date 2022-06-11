@@ -327,3 +327,21 @@ int Passenger_buscarPasajero(LinkedList* this, int id)
 
 	return retorno;
 }
+
+
+int Passenger_compararApellido(void* pasajero1, void* pasajero2)
+{
+	int retorno = -1;
+	char apellido1[TAM_NOMBRE];
+	char apellido2[TAM_NOMBRE];
+
+	if(pasajero1 != NULL && pasajero2 != NULL)
+	{
+		if(Passenger_getApellido(pasajero1,apellido1) && Passenger_getApellido(pasajero2,apellido2))
+		{
+			retorno = strcmp(apellido1,apellido2);
+		}
+	}
+
+	return retorno;
+}

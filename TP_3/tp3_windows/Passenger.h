@@ -22,7 +22,7 @@ typedef struct
 	int id;
 	char nombre[TAM_NOMBRE];
 	char apellido[TAM_NOMBRE];
-	float precio; //int?
+	float precio;
 	int tipoPasajero;
 	char codigoVuelo[TAM];
 	int estadoVuelo;
@@ -56,5 +56,7 @@ int Passenger_getEstadoVuelo(Passenger* this,int* estadoVuelo);
 void Passenger_mostrarUnPasajero(Passenger* unPasajero);
 
 int Passenger_buscarPasajero(LinkedList* this, int id);
+
+int Passenger_compararApellido(void* pasajero1, void* pasajero2);
 
 #endif /* PASSENGER_H_ */

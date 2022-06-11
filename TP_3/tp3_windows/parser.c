@@ -42,24 +42,28 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 
 int parser_PassengerFromBinary(FILE* pFile , LinkedList* pArrayListPassenger)
 {
-	/*int retorno = 0;
-	char id[100];
-	char nombre[100];
-	char apellido[100];
-	char precio[100];
-	char codigo[100];
-	char estado[100];
-	char tipo[100];
+	int retorno = 0;
 	Passenger* pasajero;
+	int tam;
 
 	if(pFile != NULL && pArrayListPassenger != NULL)
 	{
+		pasajero = Passenger_new();
+		tam = fread(pasajero,sizeof(Passenger),1,pFile);
+
 		while(!feof(pFile))
 		{
-			fread = (pasajero,sizeof(Passenger),1,pFile);
+			if(tam)
+			{
+				if(pasajero != NULL)
+				{
+					ll_add(pArrayListPassenger,pasajero);
+					retorno = 1;
+				}
+			}
 		}
 	}
-    */
-    return 1;
+
+    return retorno;
 
 }
