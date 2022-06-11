@@ -72,7 +72,7 @@ int utn_getFloat(float* pResultado, char* mensaje, char* mensajeError, float min
  * @param mensajeError char* mensaje en caso de ingresar una cadena incorrecta
  * @return retorno devuelve -1 si hubo un error, de lo contrario 0
  */
-int utn_getName(char* cadena, char* mensaje, char* mensajeError);
+int utn_getString(char* cadena, char* mensaje, char* mensajeError);
 
 /** Menu de opciones
  *

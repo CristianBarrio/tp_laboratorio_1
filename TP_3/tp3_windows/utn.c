@@ -118,7 +118,7 @@ int utn_getFloat(float* pResultado, char* mensaje, char* mensajeError, float min
 	return retorno;
 }
 
-int utn_getName(char* cadena, char* mensaje, char* mensajeError)
+int utn_getString(char* cadena, char* mensaje, char* mensajeError)
 {
 	int retorno = 1;
 

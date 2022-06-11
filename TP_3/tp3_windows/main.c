@@ -118,7 +118,18 @@ int main()
 					{
 						printf("Baja realizada con exito.\n");
 						flagGuardado = 0;
-						pasajerosIngresados++;
+						//pasajerosIngresados++;
+
+						if(pasajerosIngresados > 0)
+						{
+							if(controller_changeId(listaPasajeros,pasajerosIngresados))
+							{
+								printf("ID modificado correctamente.\n");
+							}else
+							{
+								printf("Hubo un problema al modificar el ID.\n");
+							}
+						}
 					}else
 					{
 						printf("Hubo un error al realizar la baja.\n");
