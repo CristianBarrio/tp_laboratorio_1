@@ -67,14 +67,16 @@ int main()
             		printf("Datos cargados exitosamente desde data.csv (modo binario).\n");
             		flagCarga = 1;
 
-            		if(controller_changeId(listaPasajeros,pasajerosIngresados))
+            		if(pasajerosIngresados > 0)
 					{
-						printf("ID modificado correctamente.\n");
-					}else
-					{
-						printf("Hubo un problema al modificar el ID.\n");
+						if(controller_changeId(listaPasajeros,pasajerosIngresados))
+						{
+							printf("ID modificado correctamente.\n");
+						}else
+						{
+							printf("Hubo un problema al modificar el ID.\n");
+						}
 					}
-
             	}else
                 {
                 	printf("Hubo un error al cargar los datos.\n");
@@ -96,7 +98,6 @@ int main()
             case 4:
             	if(flagAlta)
             	{
-
 					if(controller_editPassenger(listaPasajeros))
 					{
 						printf("Modificacion realizada con exito.\n");
@@ -113,7 +114,6 @@ int main()
             case 5:
             	if(flagAlta)
             	{
-
 					if(controller_removePassenger(listaPasajeros))
 					{
 						printf("Baja realizada con exito.\n");
@@ -129,22 +129,34 @@ int main()
             	}
 				break;
             case 6:
-            	if(controller_ListPassenger(listaPasajeros))
+            	if(flagAlta || flagCarga)
             	{
-            		printf("Informes realizados con exito.\n");
-				}else
-				{
-					printf("Hubo un error al realizar los informes.\n");
-				}
+					if(controller_ListPassenger(listaPasajeros))
+					{
+						printf("Informes realizados con exito.\n");
+					}else
+					{
+						printf("Hubo un error al realizar los informes.\n");
+					}
+            	}else
+            	{
+            		printf("No hay pasajeros para mostrar.\n");
+            	}
 				break;
 			case 7:
-            	if(controller_sortPassenger(listaPasajeros) && controller_ListPassenger(listaPasajeros))
-            	{
-            		printf("Ordenamiento realizado con exito.\n");
-            		flagGuardado = 0;
+				if(flagAlta || flagCarga)
+				{
+					if(controller_sortPassenger(listaPasajeros))
+					{
+						printf("Ordenamiento realizado con exito.\n");
+						flagGuardado = 0;
+					}else
+					{
+						printf("Hubo un error al realizar el ordenamiento.\n");
+					}
 				}else
 				{
-					printf("Hubo un error al realizar el ordenamiento.\n");
+					printf("No hay pasajeros para ordenar.\n");
 				}
 				break;
 			case 8:

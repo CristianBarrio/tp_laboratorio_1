@@ -43,27 +43,41 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 int parser_PassengerFromBinary(FILE* pFile , LinkedList* pArrayListPassenger)
 {
 	int retorno = 0;
+	char id[TAM];
+	char nombre[TAM_NOMBRE];
+	char apellido[TAM_NOMBRE];
+	char precio[TAM];
+	char codigo[TAM];
+	char estado[TAM_TIPO];
+	char tipo[TAM_TIPO];
 	Passenger* pasajero;
-	int tam;
+
 
 	if(pFile != NULL && pArrayListPassenger != NULL)
 	{
-		pasajero = Passenger_new();
-		tam = fread(pasajero,sizeof(Passenger),1,pFile);
+		fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,apellido,precio,codigo,estado,tipo);
 
 		while(!feof(pFile))
 		{
-			if(tam)
+			if(fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n",id,nombre,apellido,precio,codigo,estado,tipo) == 7)
 			{
+
+				pasajero = Passenger_newParametros(id,nombre,tipo,apellido,codigo,precio,estado);
+
 				if(pasajero != NULL)
 				{
 					ll_add(pArrayListPassenger,pasajero);
 					retorno = 1;
 				}
 			}
+
 		}
+	}else
+	{
+		printf("Error al leer el archivo.\n");
 	}
 
     return retorno;
+
 
 }

@@ -304,7 +304,7 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
 
 	if(pArrayListPassenger != NULL)
 	{
-		if(ll_sort(pArrayListPassenger,Passenger_compararApellido,0))
+		if(ll_sort(pArrayListPassenger,Passenger_compararApellido,1))
 		{
 			retorno = 1;
 		}
@@ -395,21 +395,80 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
 int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 {
 	int retorno = 0;
+	int id;
+	char nombre[TAM_NOMBRE];
+	char apellido[TAM_NOMBRE];
+	float precio;
+	char codigo[TAM];
+	int tipo;
+	int estado;
+	char tipoStr[TAM_TIPO];
+	char estadoStr[TAM_TIPO];
+	Passenger* pasajero;
+	int tam = ll_len(pArrayListPassenger);
 
-	if(path != NULL && pArrayListPassenger != NULL)
-	{
-		FILE* pFile = fopen(path,"ab");
-
-		if(pFile != NULL)
+		if(path != NULL && pArrayListPassenger != NULL)
 		{
-			fwrite(path,sizeof(Passenger),1,pFile);
-			retorno = 1;
-		}
-		fclose(pFile);
-	}
+			if(tam > 0)
+			{
+				FILE* pFile = fopen(path,"ab");
 
+				if(pFile != NULL)
+				{
+					fprintf(pFile,"id,name,lastname,price,flycode,typePassenger,statusFlight\n");
+					for(int i = 0; i < tam; i++)
+					{
+						pasajero = (Passenger*)ll_get(pArrayListPassenger,i);
+					}
+
+					if(pasajero != NULL && Passenger_getId(pasajero,&id) &&
+							Passenger_getNombre(pasajero,nombre) &&
+							Passenger_getApellido(pasajero,apellido) &&
+							Passenger_getCodigoVuelo(pasajero,codigo) &&
+							Passenger_getTipoPasajero(pasajero,&tipo) &&
+							Passenger_getPrecio(pasajero,&precio) &&
+							Passenger_getEstadoVuelo(pasajero,&estado))
+					{
+						switch(tipo)
+								{
+									case 1:
+										strcpy(tipoStr,"FirstClass");
+										break;
+									case 2:
+										strcpy(tipoStr,"ExecutiveClass");
+										break;
+									default:
+										strcpy(tipoStr,"EconomyClass");
+										break;
+								}
+
+								switch(estado)
+								{
+									case 1:
+										strcpy(estadoStr,"Aterrizado");
+										break;
+									case 2:
+										strcpy(estadoStr,"En vuelo");
+										break;
+									case 3:
+										strcpy(estadoStr,"En horario");
+										break;
+									default:
+										strcpy(estadoStr,"Demorado");
+										break;
+								}
+
+						fprintf(pFile,"%d,%s,%s,%.2f,%s,%d,%d\n",id,nombre,apellido,precio,codigo,tipo,estado);
+						retorno = 1;
+					}
+			}
+
+			fclose(pFile);
+			}
+		}
     return retorno;
 }
+
 
 int controller_changeId(LinkedList* pArrayListPassenger, int pasajerosIngresados)
 {
