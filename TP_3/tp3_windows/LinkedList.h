@@ -18,17 +18,17 @@
 
 #ifndef __LINKEDLIST
 #define __LINKEDLIST
-typedef struct
+struct Node
 {
     void* pElement;
     struct Node* pNextNode;
-}Node;
+}typedef Node;
 
-typedef struct
+struct LinkedList
 {
     Node* pFirstNode;
     int size;
-}LinkedList;
+}typedef LinkedList;
 #endif
 
 
