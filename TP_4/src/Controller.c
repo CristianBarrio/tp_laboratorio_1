@@ -120,8 +120,6 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 		}else
 		{
 			pasajero = (Passenger*)ll_get(pArrayListPassenger,indice);
-			//pasajeroModificado = Passenger_new();
-			//pasajeroModificado = pasajero;
 
 			if(pasajero != NULL)
 			{
