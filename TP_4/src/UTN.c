@@ -2,7 +2,7 @@
  * UTN.c
  *
  *  Created on: 16 jun. 2022
- *      Author: Cristian
+ *      Author: Barrio Cristian
  */
 
 #include "UTN.h"

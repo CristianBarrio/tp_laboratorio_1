@@ -194,7 +194,7 @@ int main(void)
 						}
 					}else
 					{
-						if(!ll_containsAll(listaPasajeros, copiaListaPasajeros))
+						if(ll_containsAll(listaPasajeros, copiaListaPasajeros))
 						{
 							ll_clear(listaPasajeros);
 							listaPasajeros = ll_clone(copiaListaPasajeros);

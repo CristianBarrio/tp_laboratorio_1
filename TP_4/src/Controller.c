@@ -2,7 +2,7 @@
  * Controller.c
  *
  *  Created on: 16 jun. 2022
- *      Author: Cristian
+ *      Author: Barrio Cristian
  */
 
 
@@ -76,16 +76,13 @@ int controller_addPassenger(LinkedList* pArrayListPassenger)
 
 		if(pasajero != NULL)
 		{
-			//if(!ll_add(pArrayListPassenger,pasajero))
-			//{
+			if(!ll_add(pArrayListPassenger,pasajero))
+			{
 				retorno = 1;
-			//pArrayListPassenger->size++;
-			ll_push(pArrayListPassenger,tam+1,pasajero);
-			//}
+			}
 		}
 
 	}
-
 
 
     return retorno;
@@ -107,6 +104,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 	int estado;
 	int datoModificado;
 	Passenger* pasajero;
+	Passenger* pasajeroModificado;
 
 	if(pArrayListPassenger != NULL && tam > 0)
 	{
@@ -123,8 +121,9 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 		}else
 		{
 			pasajero = (Passenger*)ll_get(pArrayListPassenger,indice);
+			pasajeroModificado = Passenger_new();
 
-			if(pasajero != NULL)
+			if(pasajero != NULL && pasajeroModificado != NULL)
 			{
 				Passenger_mostrarUnPasajero(pasajero);
 
@@ -134,7 +133,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 					{
 						case 1:
 							utn_getString(nombre,"Ingrese el nombre: ","Nombre invalido.\n");
-							if(Passenger_setNombre(pasajero,nombre))
+							if(Passenger_setNombre(pasajeroModificado,nombre))
 							{
 								datoModificado = 1;
 							}else
@@ -144,7 +143,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 							break;
 						case 2:
 							utn_getString(apellido,"Ingrese el apellido: ","Apellido invalido.\n");
-							if(Passenger_setApellido(pasajero,apellido))
+							if(Passenger_setApellido(pasajeroModificado,apellido))
 							{
 								datoModificado = 1;
 							}else
@@ -154,7 +153,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 							break;
 						case 3:
 							utn_getFloat(&precio,"Ingrese el precio: ","Precio invalido.\n",1,999999);
-							if(Passenger_setPrecio(pasajero,precio))
+							if(Passenger_setPrecio(pasajeroModificado,precio))
 							{
 								datoModificado = 1;
 							}else
@@ -165,7 +164,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 						case 4:
 							utn_getInt(&tipo,"Ingrese el tipo: \n"
 												"FirstClass (1) ExecutiveClass (2) EconomyClass (3) ", "Tipo invalido.\n",1,3);
-							if(Passenger_setTipoPasajero(pasajero,tipo))
+							if(Passenger_setTipoPasajero(pasajeroModificado,tipo))
 							{
 								datoModificado = 1;
 							}else
@@ -175,7 +174,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 							break;
 						case 5:
 							utn_getString(codigo,"Ingrese el codigo de vuelo: ","Codigo invalido.\n");
-							if(Passenger_setCodigoVuelo(pasajero,codigo))
+							if(Passenger_setCodigoVuelo(pasajeroModificado,codigo))
 							{
 								datoModificado = 1;
 							}else
@@ -186,7 +185,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 						case 6:
 							utn_getInt(&estado,"Ingrese el estado del vuelo: \n"
 												"Aterrizado (1) En vuelo (2) En horario (3) Demorado (4) ","Estado invalido.\n",1,4);
-							if(Passenger_setEstadoVuelo(pasajero,estado))
+							if(Passenger_setEstadoVuelo(pasajeroModificado,estado))
 							{
 								datoModificado = 1;
 							}else
@@ -201,7 +200,10 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 
 					if(datoModificado && !continuar)
 					{
-						printf("Dato modificado correctamente.\n");
+						if(!ll_push(pArrayListPassenger,indice,pasajeroModificado))
+						{
+							printf("Dato modificado correctamente.\n");
+						}
 					}else if(!continuar)
 					{
 						printf("Hubo un error al modificar el dato.\n");
@@ -251,10 +253,6 @@ int controller_removePassenger(LinkedList* pArrayListPassenger)
 					pasajeroEliminado = ll_pop(pArrayListPassenger,indice);
 					printf("Se ha eliminado el pasajero: ");
 					Passenger_mostrarUnPasajero(pasajeroEliminado);
-					/*if(!ll_remove(pArrayListPassenger,indice))
-					{
-						printf("Pasajero elminado.\n");
-					}*/
 				}else
 				{
 					printf("Se ha cancelado la baja.\n");
