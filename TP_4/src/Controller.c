@@ -104,7 +104,6 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 	int estado;
 	int datoModificado;
 	Passenger* pasajero;
-	Passenger* pasajeroModificado;
 
 	if(pArrayListPassenger != NULL && tam > 0)
 	{
@@ -121,9 +120,10 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 		}else
 		{
 			pasajero = (Passenger*)ll_get(pArrayListPassenger,indice);
-			pasajeroModificado = Passenger_new();
+			//pasajeroModificado = Passenger_new();
+			//pasajeroModificado = pasajero;
 
-			if(pasajero != NULL && pasajeroModificado != NULL)
+			if(pasajero != NULL)
 			{
 				Passenger_mostrarUnPasajero(pasajero);
 
@@ -133,7 +133,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 					{
 						case 1:
 							utn_getString(nombre,"Ingrese el nombre: ","Nombre invalido.\n");
-							if(Passenger_setNombre(pasajeroModificado,nombre))
+							if(Passenger_setNombre(pasajero,nombre))
 							{
 								datoModificado = 1;
 							}else
@@ -143,7 +143,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 							break;
 						case 2:
 							utn_getString(apellido,"Ingrese el apellido: ","Apellido invalido.\n");
-							if(Passenger_setApellido(pasajeroModificado,apellido))
+							if(Passenger_setApellido(pasajero,apellido))
 							{
 								datoModificado = 1;
 							}else
@@ -153,7 +153,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 							break;
 						case 3:
 							utn_getFloat(&precio,"Ingrese el precio: ","Precio invalido.\n",1,999999);
-							if(Passenger_setPrecio(pasajeroModificado,precio))
+							if(Passenger_setPrecio(pasajero,precio))
 							{
 								datoModificado = 1;
 							}else
@@ -164,7 +164,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 						case 4:
 							utn_getInt(&tipo,"Ingrese el tipo: \n"
 												"FirstClass (1) ExecutiveClass (2) EconomyClass (3) ", "Tipo invalido.\n",1,3);
-							if(Passenger_setTipoPasajero(pasajeroModificado,tipo))
+							if(Passenger_setTipoPasajero(pasajero,tipo))
 							{
 								datoModificado = 1;
 							}else
@@ -174,7 +174,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 							break;
 						case 5:
 							utn_getString(codigo,"Ingrese el codigo de vuelo: ","Codigo invalido.\n");
-							if(Passenger_setCodigoVuelo(pasajeroModificado,codigo))
+							if(Passenger_setCodigoVuelo(pasajero,codigo))
 							{
 								datoModificado = 1;
 							}else
@@ -185,7 +185,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 						case 6:
 							utn_getInt(&estado,"Ingrese el estado del vuelo: \n"
 												"Aterrizado (1) En vuelo (2) En horario (3) Demorado (4) ","Estado invalido.\n",1,4);
-							if(Passenger_setEstadoVuelo(pasajeroModificado,estado))
+							if(Passenger_setEstadoVuelo(pasajero,estado))
 							{
 								datoModificado = 1;
 							}else
@@ -200,7 +200,8 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
 
 					if(datoModificado && !continuar)
 					{
-						if(!ll_push(pArrayListPassenger,indice,pasajeroModificado))
+						ll_remove(pArrayListPassenger,indice);
+						if(!ll_push(pArrayListPassenger,indice,pasajero))
 						{
 							printf("Dato modificado correctamente.\n");
 						}

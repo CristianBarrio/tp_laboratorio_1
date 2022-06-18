@@ -57,7 +57,7 @@ int main(void)
 	startTesting(10); // ll_deleteLinkedList  usada
 	startTesting(11); // ll_indexOf usada en ll_contains
 	startTesting(12); // ll_isEmpty usada
-	startTesting(13); // ll_push
+	startTesting(13); // ll_push usada
 	startTesting(14); // ll_pop  usada
 	startTesting(15); // ll_contains   usada en ll_containsAll
 	startTesting(16); // ll_containsAll  usada
